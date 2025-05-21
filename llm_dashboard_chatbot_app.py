@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import openai
@@ -39,10 +38,12 @@ if uploaded_file and api_key:
         if st.button("Ask"):
             try:
                 sample_data = df.head(10).to_csv(index=False)
-                prompt = f"You are a supply chain assistant. Based on this sample data: {df.head().to_string(index=False)}"
+                prompt = f"""You are a supply chain assistant. Based on this sample data:
 {sample_data}
 
-Answer the question: {question}"
+Answer the following question in a helpful and concise way:
+{question}
+"""
 
                 response = openai.ChatCompletion.create(
                     model="gpt-3.5-turbo",
