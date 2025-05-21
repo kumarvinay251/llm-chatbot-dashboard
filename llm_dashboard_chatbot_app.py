@@ -39,7 +39,7 @@ if uploaded_file and api_key:
         if st.button("Ask"):
             try:
                 sample_data = df.head(10).to_csv(index=False)
-                prompt = f"You are a supply chain assistant. Based on this sample data:
+                prompt = f"You are a supply chain assistant. Based on this sample data: {df.head().to_string(index=False)}"
 {sample_data}
 
 Answer the question: {question}"
